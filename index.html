@@ -1,0 +1,72 @@
+ECHO is on.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My University Portal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div id="loginPage">
+        <div class="login-container">
+          <img src="logo-alliance-university.jpg" alt="Alliance University Logo" class="logo" />
+          <h2>Student Portal Login</h2>
+          <input type="text" id="username" placeholder="Username" />
+          <input type="password" id="password" placeholder="Password" />
+          <button onclick="login()">Login</button>
+          <p id="loginError" style="color:red;"></p>
+        </div>
+      </div>
+      
+
+  <div id="portalPage" style="display: none;">
+    <h1>Welcome, <span id="studentName"></span></h1>
+
+    <div class="icon-grid">
+      <div class="icon-card" onclick="showSection('info')"><i class="fas fa-user"></i><p>Info</p></div>
+      <div class="icon-card" onclick="showSection('result')"><i class="fas fa-chart-bar"></i><p>Results</p></div>
+      <div class="icon-card" onclick="showSection('attendance')"><i class="fas fa-percent"></i><p>Attendance</p></div>
+      <div class="icon-card" onclick="maintenancePage()"><i class="fas fa-book"></i><p>Courses</p></div>
+      <div class="icon-card" onclick="maintenancePage()"><i class="fas fa-calendar-alt"></i><p>Timetable</p></div>
+      <div class="icon-card" onclick="maintenancePage()"><i class="fas fa-pen"></i><p>Apply</p></div>
+      <div class="icon-card" onclick="expireSession()"><i class="fas fa-user-tie"></i><p>My Mentor</p></div>
+      <div class="icon-card" onclick="expireSession()"><i class="fas fa-bus"></i><p>Bus Info</p></div>
+      <div class="icon-card" onclick="expireSession()"><i class="fas fa-rupee-sign"></i><p>Fees</p></div>
+      <div class="icon-card" onclick="expireSession()"><i class="fas fa-comment-dots"></i><p>Grievances</p></div>
+    </div>
+
+    <section id="infoSection" class="section"></section>
+
+    <section id="resultSection" class="section" style="display:none;">
+      <h2>Results</h2>
+      <label>Select Semester:</label>
+      <select id="semesterSelect" onchange="loadResultPDF()">
+        <option value="sem1">Semester 1</option>
+        <option value="sem2">Semester 2</option>
+      </select>
+      <iframe id="pdfFrame" width="100%" height="600px"></iframe>
+      <p id="pdfError" style="color:red; display:none;">There is something went wrong. Try again.</p>
+      <button onclick="printPDF()">🖨️ Print Result</button>
+    </section>
+
+    <section id="attendanceSection" class="section" style="display:none;">
+      <h2>Attendance</h2>
+      <label>Select Semester:</label>
+      <select id="attendanceSemester" onchange="loadAttendancePDF()">
+        <option value="sem1">Semester 1</option>
+        <option value="sem2">Semester 2</option>
+      </select>
+      <iframe id="attendanceFrame" width="100%" height="600px" style="margin-top: 10px;"></iframe>
+      <p id="attendanceError" style="color:red; display:none;">There is something went wrong. Try again.</p>
+      <button onclick="printAttendance()">🖨️ Print Attendance</button>
+    </section>
+
+    <section id="maintenanceSection" class="section" style="display:none;">
+      <p><b>This page is under maintenance. Try again later.</b></p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
